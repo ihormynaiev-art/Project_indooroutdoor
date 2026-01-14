@@ -1,0 +1,33 @@
+/* Navigation Breadcrumb Styles */
+.breadcrumb-navigation {
+    padding: 10px 0;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.breadcrumb-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-links a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-links a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.breadcrumb-links .separator {
+    margin: 0 8px;
+    color: #6c757d;
+}
+
+.breadcrumb-links .current {
+    color: #6c757d;
+    font-weight: 500;
+}

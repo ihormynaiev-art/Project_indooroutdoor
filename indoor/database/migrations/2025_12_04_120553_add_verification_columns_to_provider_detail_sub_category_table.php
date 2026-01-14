@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('provider_detail_sub_category', function (Blueprint $table) {
+            $table->timestamp('license_verified_at')->nullable();
+            $table->timestamp('license_expires_on')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('provider_detail_sub_category', function (Blueprint $table) {
+            $table->dropColumn('license_verified_at');
+            $table->dropColumn('license_expires_on');
+        });
+    }
+};

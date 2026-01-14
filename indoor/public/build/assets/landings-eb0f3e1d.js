@@ -1,0 +1,16 @@
+if($.fn.dataTable.isDataTable("#contractors-data"))r=$("#contractors-data").DataTable();else var r=$("#contractors-data").DataTable({ordering:!0,order:[[2,"desc"]],ajax:"landings",columnDefs:[{width:"20%",targets:0}],columns:[{data:null,render:function(e,t,a){return`<a target="_blank" href="/admin/providerDetail/${e.id}">
+                        <span>${e.provider_detail.business_name}</span>
+                    </a>`}},{data:"created_at"},{data:null,render:function(e,t,a){return e.provider_detail&&e.provider_detail.plan?`<span class="badge bg-${e.provider_detail.plan.name==="premium"?"primary":"secondary"}">${e.provider_detail.plan.display_name}</span>`:'<span class="text-muted">-</span>'}},{data:"provider_detail.landing",type:"boolean",render:function(e,t,a){return e?e.is_published?'<i class="text-success fa-solid fa-circle-check fa-xl"></i>':'<i class="text-danger fa-solid fa-circle-xmark fa-xl"></i>':""}},{data:null,orderable:!1,render:function(e,t,a){const n=e.provider_detail.landing?`<a class="table-edit" href="/admin/landings/${e.provider_detail.landing.id}/edit">
+                            <i class="fa-regular fa-pen-to-square"></i><span>Edit</span>
+                        </a>`:`<a class="table-edit" href="/admin/landings/create/${e.provider_detail.id}">
+                            <i class="fa-regular fa-plus-square"></i><span>Create</span>
+                        </a>`,i=e.provider_detail.landing?`<a class="table-view" href="/provider-details/${e.provider_detail.slug}/${e.provider_detail.landing.slug}" target="_blank">
+                            <i class="fa-solid fa-link"></i><span>Link</span>
+                        </a>`:"",s=e.provider_detail.landing?`<a class="table-delete" href="javascript:void(0);" data-id="${e.provider_detail.landing.id}">
+                            <i class="fa-solid fa-trash-can"></i><span>Delete</span>
+                        </a>`:"";return`
+                    <div class="action-language mt-1 mx-1">
+                        ${n}
+                        ${i}
+                        ${s}
+                    </div>`}}],paging:!0,searching:!0,info:!0,dom:"rtip",language:{paginate:{first:"",last:"",next:"",previous:""},info:"Showing _START_ - _END_ of _TOTAL_ items",infoFiltered:"",infoEmpty:""}});$(document).on("click",".table-resposnive .table-delete",function(){var e=$(this).data("id");Swal.fire({title:"Delete Landing",text:"Are you sure you want to delete this landing page? This action cannot be undone.",icon:"warning",showCancelButton:!0,focusConfirm:!1,confirmButtonText:"Delete",cancelButtonText:"Cancel",customClass:{confirmButton:"btn btn-danger mr-3",cancelButton:"btn btn-secondary"},showClass:{popup:"swal2-noanimation",backdrop:"swal2-noanimation"},buttonsStyling:!1}).then(t=>{t.isConfirmed&&$.ajax({type:"DELETE",url:"landings/"+e,data:{_method:"DELETE",_token:$("#token").val()},success:function(a){a.status==="success"&&(Swal.fire({toast:!0,icon:"success",title:"Landing deleted successfully",animation:!1,position:"top-right",showConfirmButton:!1,timer:3e3,timerProgressBar:!0}),r.ajax.reload())},error:function(a,n,i){Swal.fire({toast:!0,icon:"error",title:"Failed to delete landing",animation:!1,position:"top-right",showConfirmButton:!1,timer:3e3,timerProgressBar:!0})}})})});

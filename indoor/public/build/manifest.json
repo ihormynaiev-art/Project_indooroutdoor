@@ -1,0 +1,222 @@
+{
+  "public/assets/img/bg/b.png": {
+    "file": "assets/b-466883aa.png",
+    "src": "public/assets/img/bg/b.png"
+  },
+  "public/assets/img/bg/contact-bg.png": {
+    "file": "assets/contact-bg-5620d5a3.png",
+    "src": "public/assets/img/bg/contact-bg.png"
+  },
+  "public/assets/img/bg/feature-bg-01.png": {
+    "file": "assets/feature-bg-01-53355fa9.png",
+    "src": "public/assets/img/bg/feature-bg-01.png"
+  },
+  "public/assets/img/bg/feature-bg-02.png": {
+    "file": "assets/feature-bg-02-16f9982c.png",
+    "src": "public/assets/img/bg/feature-bg-02.png"
+  },
+  "public/assets/img/bg/pro-bg-01.png": {
+    "file": "assets/pro-bg-01-0809d74e.png",
+    "src": "public/assets/img/bg/pro-bg-01.png"
+  },
+  "public/assets/img/bg/pro-bg-02.png": {
+    "file": "assets/pro-bg-02-22fdfa8e.png",
+    "src": "public/assets/img/bg/pro-bg-02.png"
+  },
+  "public/assets/img/bg/provider-bg.png": {
+    "file": "assets/provider-bg-f94c8ac1.png",
+    "src": "public/assets/img/bg/provider-bg.png"
+  },
+  "public/assets/img/bg/work-bg-01.png": {
+    "file": "assets/work-bg-01-caad3e70.png",
+    "src": "public/assets/img/bg/work-bg-01.png"
+  },
+  "public/assets/img/bg/work-bg-02.png": {
+    "file": "assets/work-bg-02-c879d689.png",
+    "src": "public/assets/img/bg/work-bg-02.png"
+  },
+  "public/assets/img/home-pro/banner.png": {
+    "file": "assets/banner-859da0f4.png",
+    "src": "public/assets/img/home-pro/banner.png"
+  },
+  "public/assets/img/icons/banner-arrow.svg": {
+    "file": "assets/banner-arrow-000f1c44.svg",
+    "src": "public/assets/img/icons/banner-arrow.svg"
+  },
+  "public/assets/img/icons/banner-nine-dot.svg": {
+    "file": "assets/banner-nine-dot-ca272ae8.svg",
+    "src": "public/assets/img/icons/banner-nine-dot.svg"
+  },
+  "public/assets/img/icons/banner-nine-icon-1.svg": {
+    "file": "assets/banner-nine-icon-1-b032101a.svg",
+    "src": "public/assets/img/icons/banner-nine-icon-1.svg"
+  },
+  "public/assets/img/icons/banner-nine-icon-2.svg": {
+    "file": "assets/banner-nine-icon-2-26c40dd8.svg",
+    "src": "public/assets/img/icons/banner-nine-icon-2.svg"
+  },
+  "public/assets/img/icons/check-icon.svg": {
+    "file": "assets/check-icon-5cca1be6.svg",
+    "src": "public/assets/img/icons/check-icon.svg"
+  },
+  "public/assets/img/icons/check.svg": {
+    "file": "assets/check-582fd743.svg",
+    "src": "public/assets/img/icons/check.svg"
+  },
+  "public/assets/img/icons/close-icon.svg": {
+    "file": "assets/close-icon-e1071601.svg",
+    "src": "public/assets/img/icons/close-icon.svg"
+  },
+  "public/assets/img/icons/x-icon.svg": {
+    "file": "assets/x-icon-d8fc393f.svg",
+    "src": "public/assets/img/icons/x-icon.svg"
+  },
+  "resources/css/admin.css": {
+    "file": "assets/admin-e773b4ff.css",
+    "isEntry": true,
+    "src": "resources/css/admin.css"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-8f496535.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/css/edition.css": {
+    "file": "assets/edition-1ec63226.css",
+    "isEntry": true,
+    "src": "resources/css/edition.css"
+  },
+  "resources/css/plugins/feather/fonts/feather-webfont.woff": {
+    "file": "assets/feather-webfont-f81046ea.woff",
+    "src": "resources/css/plugins/feather/fonts/feather-webfont.woff"
+  },
+  "resources/css/plugins/fontawesome/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-5656d596.ttf",
+    "src": "resources/css/plugins/fontawesome/webfonts/fa-brands-400.ttf"
+  },
+  "resources/css/plugins/fontawesome/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-3a8924cd.woff2",
+    "src": "resources/css/plugins/fontawesome/webfonts/fa-brands-400.woff2"
+  },
+  "resources/css/plugins/fontawesome/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-5d02dc9b.ttf",
+    "src": "resources/css/plugins/fontawesome/webfonts/fa-regular-400.ttf"
+  },
+  "resources/css/plugins/fontawesome/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-2bccecf0.woff2",
+    "src": "resources/css/plugins/fontawesome/webfonts/fa-regular-400.woff2"
+  },
+  "resources/css/plugins/fontawesome/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-fbbf06d7.ttf",
+    "src": "resources/css/plugins/fontawesome/webfonts/fa-solid-900.ttf"
+  },
+  "resources/css/plugins/fontawesome/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-9fc85f3a.woff2",
+    "src": "resources/css/plugins/fontawesome/webfonts/fa-solid-900.woff2"
+  },
+  "resources/css/plugins/fontawesome/webfonts/fa-v4compatibility.ttf": {
+    "file": "assets/fa-v4compatibility-09663a36.ttf",
+    "src": "resources/css/plugins/fontawesome/webfonts/fa-v4compatibility.ttf"
+  },
+  "resources/css/plugins/fontawesome/webfonts/fa-v4compatibility.woff2": {
+    "file": "assets/fa-v4compatibility-4d4a2d7f.woff2",
+    "src": "resources/css/plugins/fontawesome/webfonts/fa-v4compatibility.woff2"
+  },
+  "resources/fonts/Feather.svg": {
+    "file": "assets/Feather-e2e053a2.svg",
+    "src": "resources/fonts/Feather.svg"
+  },
+  "resources/fonts/Feather.ttf": {
+    "file": "assets/Feather-e103929d.ttf",
+    "src": "resources/fonts/Feather.ttf"
+  },
+  "resources/fonts/Feather.woff": {
+    "file": "assets/Feather-aae1005a.woff",
+    "src": "resources/fonts/Feather.woff"
+  },
+  "resources/js/admin.js": {
+    "file": "assets/admin-0fb2329f.js",
+    "isEntry": true,
+    "src": "resources/js/admin.js"
+  },
+  "resources/js/admin/admins.js": {
+    "file": "assets/admins-fbaa3875.js",
+    "isEntry": true,
+    "src": "resources/js/admin/admins.js"
+  },
+  "resources/js/admin/categories.js": {
+    "file": "assets/categories-b86ae1ce.js",
+    "isEntry": true,
+    "src": "resources/js/admin/categories.js"
+  },
+  "resources/js/admin/contact-messages.js": {
+    "file": "assets/contact-messages-c12c0611.js",
+    "isEntry": true,
+    "src": "resources/js/admin/contact-messages.js"
+  },
+  "resources/js/admin/contractors.js": {
+    "file": "assets/contractors-bc4127f0.js",
+    "isEntry": true,
+    "src": "resources/js/admin/contractors.js"
+  },
+  "resources/js/admin/homeowners.js": {
+    "file": "assets/homeowners-6c786ee1.js",
+    "isEntry": true,
+    "src": "resources/js/admin/homeowners.js"
+  },
+  "resources/js/admin/invite-codes.js": {
+    "file": "assets/invite-codes-789529ea.js",
+    "isEntry": true,
+    "src": "resources/js/admin/invite-codes.js"
+  },
+  "resources/js/admin/landings.js": {
+    "file": "assets/landings-eb0f3e1d.js",
+    "isEntry": true,
+    "src": "resources/js/admin/landings.js"
+  },
+  "resources/js/admin/licenses.js": {
+    "file": "assets/licenses-15e69f86.js",
+    "isEntry": true,
+    "src": "resources/js/admin/licenses.js"
+  },
+  "resources/js/admin/magazineImages.js": {
+    "file": "assets/magazineImages-49f166f2.js",
+    "isEntry": true,
+    "src": "resources/js/admin/magazineImages.js"
+  },
+  "resources/js/admin/magazines.js": {
+    "file": "assets/magazines-b1a2a5be.js",
+    "isEntry": true,
+    "src": "resources/js/admin/magazines.js"
+  },
+  "resources/js/admin/plans.js": {
+    "file": "assets/plans-aee2ec39.js",
+    "isEntry": true,
+    "src": "resources/js/admin/plans.js"
+  },
+  "resources/js/admin/smsMessages.js": {
+    "file": "assets/smsMessages-08990798.js",
+    "isEntry": true,
+    "src": "resources/js/admin/smsMessages.js"
+  },
+  "resources/js/admin/smsTemplates.js": {
+    "file": "assets/smsTemplates-a7871f20.js",
+    "isEntry": true,
+    "src": "resources/js/admin/smsTemplates.js"
+  },
+  "resources/js/admin/testimonials.js": {
+    "file": "assets/testimonials-ff2aa7fe.js",
+    "isEntry": true,
+    "src": "resources/js/admin/testimonials.js"
+  },
+  "resources/js/admin/users.js": {
+    "file": "assets/users-2f4e79a3.js",
+    "isEntry": true,
+    "src": "resources/js/admin/users.js"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-a981be0d.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}

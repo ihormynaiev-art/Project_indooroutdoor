@@ -1,0 +1,20 @@
+[
+    {
+        "id": "01",
+        "image":"work-icon.svg",
+        "heading":"Choose What To Do",
+        "description":"Lorem ipsum dolor amet, consectetur adipiscing tempor labore et dolore magna aliqua."
+    },
+    {
+        "id": "02",
+        "image":"find-icon.svg",
+        "heading":"Find What You Want",
+        "description":"Lorem ipsum dolor amet, consectetur adipiscing tempor labore et dolore magna aliqua."
+    },
+    {
+        "id": "03",
+        "image":"place-icon.svg",
+        "heading":"Amazing Places",
+        "description":"Lorem ipsum dolor amet, consectetur adipiscing tempor labore et dolore magna aliqua."
+    }
+]

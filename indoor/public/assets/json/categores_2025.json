@@ -1,0 +1,343 @@
+[
+  {
+    "category": "Concrete, Brick & Pavers",
+    "services": [
+      "Concrete Driveways",
+      "Concrete Patios & Walks",
+      "Stamped / Decorative Concrete",
+      "Concrete Repair / Leveling",
+      "Brickwork / Masonry",
+      "Chimney Repair",
+      "Paver Installation",
+      "Paver Repair / Restoration",
+      "Hardscape Drainage (Patio/Driveway Water Issues)"
+    ]
+  },
+  {
+    "category": "Decks & Porches",
+    "services": [
+      "Deck Construction (Wood)",
+      "Deck Construction (Composite)",
+      "Deck Repair / Rebuild",
+      "Deck Staining / Sealing",
+      "Screened-In Porches",
+      "Porches (Open / Enclosed)",
+      "Railings",
+      "Pergolas / Pavilions",
+      "Deck Waterproofing Systems"
+    ]
+  },
+  {
+    "category": "Driveways, Patios & Walks",
+    "services": [
+      "Asphalt Driveways",
+      "Concrete Driveways",
+      "Paver Driveways",
+      "Patios (Concrete / Paver)",
+      "Walkways",
+      "Resurfacing / Sealing",
+      "Drainage / Slope Correction (Hardscape)"
+    ]
+  },
+  {
+    "category": "Electrical",
+    "services": [
+      "Electrical Repair / Troubleshooting",
+      "Panel Upgrades",
+      "New Circuits / Outlets",
+      "Lighting Installation",
+      "Generators (Install / Service)",
+      "EV Charger Installation",
+      "Smart Home / Low Voltage",
+      "Whole-Home Surge Protection"
+    ]
+  },
+  {
+    "category": "Fences",
+    "services": [
+      "Wood Fencing",
+      "Vinyl Fencing",
+      "Aluminum / Steel Fencing",
+      "Chain Link Fencing",
+      "Fence Repair",
+      "Gates / Entry Systems"
+    ]
+  },
+  {
+    "category": "Finish Carpentry",
+    "services": [
+      "Trim / Molding Installation",
+      "Interior Doors (Install / Replace)",
+      "Wainscoting / Wall Treatments",
+      "Built-ins / Custom Woodwork",
+      "Stair Railings / Banisters"
+    ]
+  },
+  {
+    "category": "Flooring",
+    "services": [
+      "Hardwood Installation",
+      "Hardwood Refinishing",
+      "Luxury Vinyl Plank",
+      "Laminate Flooring",
+      "Carpet Installation",
+      "Tile Flooring"
+    ]
+  },
+  {
+    "category": "Garages, Doors & Openers",
+    "services": [
+      "Garage Door Installation",
+      "Garage Door Repair",
+      "Openers / Keypads",
+      "Garage Storage Systems",
+      "Garage Floor Coatings (Epoxy)"
+    ]
+  },
+  {
+    "category": "Heating & Cooling",
+    "services": [
+      "Furnace Installation / Repair",
+      "Air Conditioning Installation / Repair",
+      "Boilers",
+      "Heat Pumps / Mini Splits",
+      "Ductless Systems",
+      "Duct Cleaning",
+      "Indoor Air Quality (Humidifiers / Purifiers)"
+    ]
+  },
+  {
+    "category": "Home Furnishings",
+    "services": [
+      "Furniture Retail",
+      "Mattresses",
+      "Home Decor & Accessories",
+      "Lighting Stores",
+      "Window Treatments",
+      "Home Organization Products"
+    ]
+  },
+  {
+    "category": "Insulation",
+    "services": [
+      "Spray Foam",
+      "Blown-In / Cellulose",
+      "Batt Insulation",
+      "Crawlspace Encapsulation",
+      "Soundproofing"
+    ]
+  },
+  {
+    "category": "Kitchens",
+    "services": [
+      "Full Kitchen Remodeling",
+      "Kitchen Design",
+      "Kitchen Cabinets",
+      "Cabinet Refinishing / Painting",
+      "Countertops",
+      "Backsplash Installation",
+      "Plumbing Fixtures"
+    ]
+  },
+  {
+    "category": "Landscape",
+    "services": [
+      "Landscape Design",
+      "Planting / Bed Installation",
+      "Hardscapes (Pavers, Walls)",
+      "Retaining Walls",
+      "Outdoor Kitchens",
+      "Firepits & Fire Features",
+      "Yard Drainage (French Drains / Swales)",
+      "Grading / Sod",
+      "Mulch / Stone Installation",
+      "Shrub Trimming / Removal",
+      "Landscape Lighting"
+    ]
+  },
+  {
+    "category": "Lawncare & Sprinklers",
+    "services": [
+      "Lawn Mowing / Maintenance",
+      "Fertilization / Weed Control",
+      "Irrigation System Installation",
+      "Irrigation System Repair",
+      "Aeration / Overseeding"
+    ]
+  },
+  {
+    "category": "Organization",
+    "services": [
+      "Closet Systems",
+      "Pantry Organization",
+      "Mudroom Built-ins",
+      "Garage Storage Systems",
+      "Basement / Attic Organization"
+    ]
+  },
+  {
+    "category": "Painting & Repairs",
+    "services": [
+      "Interior Painting",
+      "Exterior Painting",
+      "Drywall Installation / Repair",
+      "Cabinet Painting / Refinishing",
+      "Wallpaper Installation / Removal",
+      "Carpentry Repairs"
+    ]
+  },
+  {
+    "category": "Roofing & Gutters",
+    "services": [
+      "Roof Replacement",
+      "Roof Repair",
+      "Roof Inspections",
+      "Storm Damage / Insurance Work",
+      "Gutters & Downspouts",
+      "Gutter Guards",
+      "Roof Drainage (Runoff Management)"
+    ]
+  },
+  {
+    "category": "Siding",
+    "services": [
+      "Vinyl Siding",
+      "Fiber Cement Siding",
+      "Wood Siding",
+      "Aluminum Siding",
+      "Siding Repair",
+      "Soffit & Fascia"
+    ]
+  },
+  {
+    "category": "Swimming Pools & Spas",
+    "services": [
+      "Pool Installation",
+      "Pool Service / Maintenance",
+      "Openings & Closings",
+      "Hot Tubs / Spas",
+      "Pool Decking"
+    ]
+  },
+  {
+    "category": "Tile & Stone",
+    "services": [
+      "Tile Floors",
+      "Bathroom Tile",
+      "Kitchen Backsplash",
+      "Outdoor Tile",
+      "Fireplace Surrounds",
+      "Stone Countertops",
+      "Tile Repair / Regrout"
+    ]
+  },
+  {
+    "category": "Windows & Doors",
+    "services": [
+      "Window Replacement",
+      "Window Repair",
+      "Entry Doors",
+      "Patio / Sliding Doors",
+      "Storm Doors",
+      "Skylights",
+      "Door Hardware / Accessories"
+    ]
+  },
+  {
+    "category": "Plumbing",
+    "services": [
+      "General Plumbing Repairs",
+      "Water Heaters",
+      "Tankless Water Heaters",
+      "Sump Pumps",
+      "Drain Cleaning",
+      "Pipe Leaks / Repiping",
+      "Garbage Disposals",
+      "Fixture Installation (Sinks, Toilets, Faucets)"
+    ]
+  },
+  {
+    "category": "Bathroom Remodeling",
+    "services": [
+      "Full Bathroom Remodeling",
+      "Shower / Tub Replacement",
+      "Tile Showers",
+      "Vanities & Countertops",
+      "Plumbing Fixtures",
+      "Accessibility Bathrooms (Walk-In Tubs, Grab Bars)"
+    ]
+  },
+  {
+    "category": "Basement & Waterproofing",
+    "services": [
+      "Foundation Waterproofing",
+      "Interior Drain Tile Systems",
+      "Exterior Excavation Waterproofing",
+      "Foundation Crack Repair",
+      "Sump Pumps / Backup Systems",
+      "Egress Windows",
+      "Basement Finishing"
+    ]
+  },
+  {
+    "category": "Handyman Services",
+    "services": [
+      "General Home Repairs",
+      "Minor Carpentry",
+      "Minor Plumbing",
+      "Minor Electrical",
+      "TV Mounting",
+      "Caulking / Weatherstripping"
+    ]
+  },
+  {
+    "category": "Solar Energy",
+    "services": [
+      "Solar Panel Installation",
+      "Solar Repair / Maintenance",
+      "Battery Storage Systems"
+    ]
+  },
+  {
+    "category": "Pest Control",
+    "services": [
+      "General Pest Control",
+      "Rodent Control",
+      "Wildlife Removal",
+      "Termite Treatment",
+      "Mosquito / Tick Control"
+    ]
+  },
+  {
+    "category": "Cleaning Services",
+    "services": [
+      "House Cleaning",
+      "Move-In / Move-Out Cleaning",
+      "Carpet & Upholstery Cleaning",
+      "Power Washing",
+      "Window Cleaning",
+      "Gutter Cleaning"
+    ]
+  },
+  {
+    "category": "Security Systems",
+    "services": [
+      "Home Security Systems",
+      "Security Cameras",
+      "Smart Locks & Access Control",
+      "Alarm Installation & Monitoring",
+      "Low Voltage Wiring"
+    ]
+  },
+  {
+    "category": "Appliance Repair",
+    "services": [
+      "Major Appliance Repair",
+      "Refrigerator Repair",
+      "Washer / Dryer Repair",
+      "Oven / Range / Cooktop Repair",
+      "Dishwasher Repair",
+      "Appliance Installation"
+    ]
+  }
+]
