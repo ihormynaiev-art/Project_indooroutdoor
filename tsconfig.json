@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "pages/*": ["pages/*"],
+            "api/*": ["api/*"],
+            "fixtures/*": ["fixtures/*"],
+            "utils/*": ["utils/*"],
+            "test-data/*": ["test-data/*"]
+        },
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "outDir": "./dist"
+    },
+    "include": [
+        "tests/**/*.ts",
+        "pages/**/*.ts",
+        "api/**/*.ts",
+        "fixtures/**/*.ts",
+        "utils/**/*.ts",
+        "test-data/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
