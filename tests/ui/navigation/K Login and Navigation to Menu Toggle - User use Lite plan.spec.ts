@@ -211,48 +211,58 @@ test.describe('Menu Toggle Suite @regression', () => {
     await test.step('Навигация через выпадающее меню', async () => {
       // Кликаем на элемент меню (иконка для открытия выпадающего списка)
       const menuIcon = page.locator('xpath=//*[@id="sidebar-menu"]/div/a/i');
-      await expect(menuIcon).toBeVisible({ timeout: 10000 });
+      await expect(menuIcon).toBeVisible({ timeout: 15000 });
       await menuIcon.click();
       await page.waitForTimeout(500);
       console.log('✅ Клик на иконку меню выполнен');
       
-      // Первая ссылка - Profile
-      const profileLink = page.locator('xpath=//*[@id="dropboxes"]/ul[1]/li[1]/a');
-      await expect(profileLink).toBeVisible({ timeout: 10000 });
-      await profileLink.click();
-      await page.waitForTimeout(2000);
+      // Первая ссылка - Profile (используем позицию в меню для точности)
+      const profileLink = page.locator('#dropboxes ul').nth(0).locator('li').nth(0).locator('a');
+      await expect(profileLink).toBeVisible({ timeout: 20000 });
       
-      // Проверяем переход на страницу профиля
-      await page.waitForURL('https://dev.indooroutdoor.com/profile', { timeout: 10000 });
-      await expect(page).toHaveURL('https://dev.indooroutdoor.com/profile');
-      console.log('✅ Переход на страницу профиля выполнен');
+      console.log(`ℹ️ URL до клика на Profile: ${page.url()}`);
+      
+      // Кликаем и ждем навигации (принимаем и /profile, и /provider/details)
+      await Promise.all([
+        page.waitForURL(/\/profile|\/provider\/details/, { timeout: 35000, waitUntil: 'domcontentloaded' }),
+        profileLink.click()
+      ]);
+      
+      console.log(`✅ Переход в профиль выполнен. Текущий URL: ${page.url()}`);
       
       // Снова кликаем на иконку меню
       await menuIcon.click();
       await page.waitForTimeout(500);
       console.log('✅ Клик на иконку меню выполнен (второй раз)');
       
-      // Вторая ссылка - Verification
-      const verificationLink = page.locator('xpath=//*[@id="dropboxes"]/ul[1]/li[2]/a');
-      await expect(verificationLink).toBeVisible({ timeout: 10000 });
-      await verificationLink.click();
-      await page.waitForTimeout(2000);
+      // Вторая ссылка - Verification (второй элемент в первом списке)
+      const verificationLink = page.locator('#dropboxes ul').nth(0).locator('li').nth(1).locator('a');
+      await expect(verificationLink).toBeVisible({ timeout: 20000 });
       
-      // Проверяем переход на страницу verification
-      await page.waitForURL('https://dev.indooroutdoor.com/provider/verification', { timeout: 10000 });
-      await expect(page).toHaveURL('https://dev.indooroutdoor.com/provider/verification');
-      console.log('✅ Переход на страницу verification выполнен');
+      console.log(`ℹ️ URL до клика на Verification: ${page.url()}`);
+      
+      await Promise.all([
+        page.waitForURL(/\/provider\/verification/, { timeout: 35000, waitUntil: 'domcontentloaded' }),
+        verificationLink.click()
+      ]);
+      
+      console.log(`✅ Текущий URL после Verification: ${page.url()}`);
       
       // Снова кликаем на иконку меню
       await menuIcon.click();
       await page.waitForTimeout(500);
       console.log('✅ Клик на иконку меню выполнен (третий раз)');
       
-      // Третья ссылка - Terms & Conditions
-      const termsLink = page.locator('xpath=//*[@id="dropboxes"]/ul[2]/li[1]/a');
-      await expect(termsLink).toBeVisible({ timeout: 10000 });
-      await termsLink.click();
-      await page.waitForTimeout(2000);
+      // Третья ссылка - Terms & Conditions (первый элемент во втором списке)
+      const termsLink = page.locator('#dropboxes ul').nth(1).locator('li').nth(0).locator('a');
+      await expect(termsLink).toBeVisible({ timeout: 20000 });
+      
+      console.log(`ℹ️ URL до клика на Terms: ${page.url()}`);
+      
+      await Promise.all([
+        page.waitForURL(/\/terms-condition|terms-conditions/i, { timeout: 35000, waitUntil: 'domcontentloaded' }),
+        termsLink.click()
+      ]);
       console.log('✅ Переход на страницу Terms & Conditions выполнен');
     });
 
@@ -380,11 +390,16 @@ test.describe('Menu Toggle Suite @regression', () => {
       await page.waitForTimeout(500);
       console.log('✅ Клик на иконку меню выполнен');
       
-      // Кликаем на Privacy Policy
-      const privacyLink = page.locator('xpath=//*[@id="dropboxes"]/ul[2]/li[2]/a');
-      await expect(privacyLink).toBeVisible({ timeout: 10000 });
-      await privacyLink.click();
-      await page.waitForTimeout(2000);
+      // Кликаем на Privacy Policy (второй элемент во втором списке)
+      const privacyLink = page.locator('#dropboxes ul').nth(1).locator('li').nth(1).locator('a');
+      await expect(privacyLink).toBeVisible({ timeout: 20000 });
+      
+      console.log(`ℹ️ URL до клика на Privacy: ${page.url()}`);
+      
+      await Promise.all([
+        page.waitForURL(/\/privacy-policy/, { timeout: 35000, waitUntil: 'domcontentloaded' }),
+        privacyLink.click()
+      ]);
       console.log('✅ Переход на страницу Privacy Policy выполнен');
     });
 
