@@ -1,0 +1,34 @@
+✅ Авторизация выполнена
+✅ Переход на страницу Upload License & Insurance выполнен
+✅ Заголовок найден: "Upload License & Insurance"
+✅ Заголовок видим и не скрыт через CSS
+✅ Стили заголовка: font-size=24px, font-family=Poppins, sans-serif
+✅ Цвет заголовка: rgb(51, 51, 51)
+✅ URL страницы корректный: "https://dev.indooroutdoor.com/provider/verification"
+✅ Иконка документа видна
+✅ Иконка видима и не скрыта через CSS
+✅ Размеры иконки: width=16px, height=16px
+✅ Текст "Document Verification" найден
+✅ Стили текста: font-size=16px, color=rgb(42, 49, 61)
+✅ Текст "Categories" найден
+✅ Стили текста: font-size=24px, color=rgb(51, 51, 51)
+✅ Колонка "NAME" найдена
+✅ Колонка "LICENSE REQUIRED" найдена
+✅ Колонка "LICENSE VERIFIED AT" найдена
+✅ Колонка "LICENSE EXPIRES ON" найдена
+✅ Стили колонок таблицы: font-size=16px, font-weight=700, text-align=start
+✅ Кнопка "Change" найдена
+✅ Стили кнопки: background-color=rgb(8, 28, 74), color=rgb(255, 255, 255), border-radius=4px, cursor=pointer
+✅ Hover состояние: background-color=rgb(8, 28, 74), opacity=1
+✅ Модальное окно открыто
+✅ Стили модального окна: display=block, z-index=1050
+✅ Заголовок "Verify Your Identity" найден в попапе
+✅ Стили заголовка попапа: font-size=28px, font-weight=700
+✅ Текст "Upload document" найден в попапе
+✅ Поле "Document Name" найдено и доступно
+✅ Стили поля Document Name: font-size=15px, padding=6px 15px, border-radius=5px
+✅ Focus State поля: border-color=rgb(187, 187, 187), outline=rgb(33, 37, 41) none 0px
+✅ Поле загрузки файла найдено
+✅ Поле загрузки файла видимо
+✅ Информативный текст найден в попапе
+✅ Стили alert: background-color=rgb(207, 244, 252), padding=16px, border-radius=6px
