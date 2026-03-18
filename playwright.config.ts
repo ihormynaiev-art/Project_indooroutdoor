@@ -13,6 +13,7 @@ export default defineConfig({
     workers: process.env.CI ? 1 : undefined,
     reporter: [
         ['html', { outputFolder: 'playwright-report' }],
+        ['allure-playwright', { outputFolder: 'allure-results' }],
     ],
     outputDir: './test-results',
 
@@ -24,33 +25,22 @@ export default defineConfig({
 
     projects: [
         {
-            name: 'setup',
-            testDir: './tests/setup',
-            testMatch: '**/*.setup.ts',
-        },
-        {
             name: 'chromium',
             use: {
                 ...devices['Desktop Chrome'],
-                storageState: './storage-states/user-state.json',
             },
-            dependencies: ['setup'],
         },
         {
             name: 'firefox',
             use: {
                 ...devices['Desktop Firefox'],
-                storageState: './storage-states/user-state.json',
             },
-            dependencies: ['setup'],
         },
         {
             name: 'webkit',
             use: {
                 ...devices['Desktop Safari'],
-                storageState: './storage-states/user-state.json',
             },
-            dependencies: ['setup'],
         },
     ],
 });

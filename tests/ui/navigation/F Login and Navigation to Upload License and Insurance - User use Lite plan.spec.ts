@@ -54,7 +54,7 @@
 
 import { test, expect } from '@playwright/test';
 import * as path from 'path';
-import { checkUIUX } from './helpers/ui-ux-helpers';
+import { checkUIUX } from 'utils/ui.ux.helper';
 
 test.describe.configure({ mode: 'serial' }); // Выполнять тесты по очереди
 

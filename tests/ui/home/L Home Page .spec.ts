@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { checkStyles, checkAccessibility, checkResponsiveDesign, checkPerformance } from './helpers/ui-ux-helpers';
+import { checkStyles, checkAccessibility, checkResponsiveDesign, checkPerformance } from 'utils/ui.ux.helper';
 
 test.describe.configure({ mode: 'serial' }); // Выполнять тесты по очереди
 
@@ -219,10 +219,10 @@ test.describe('Home Page Tests @regression', () => {
     await page.locator('section').filter({ hasText: 'Helping make a House Your' }).getByRole('button').click();
     await page.goto('https://dev.indooroutdoor.com/');
     await expect(page.locator('section').filter({ hasText: 'Helping make a House Your' }).getByRole('button')).toBeVisible();
-    
+
     await page.getByRole('button', { name: 'Request Quote' }).click();
     await page.getByRole('button', { name: 'Close' }).click();
-    
+
     await page.getByRole('link', { name: 'Search by Service' }).click();
     // Возвращаемся на главную страницу, чтобы найти элемент "Browse E-dition"
     await page.goto('https://dev.indooroutdoor.com/');
@@ -236,18 +236,18 @@ test.describe('Home Page Tests @regression', () => {
    * SEARCH FUNCTIONALITY TESTS
    */
   test.describe('Search Functionality Audit @search', () => {
-    
+
     test('Валидный поисковый запрос через Enter', async ({ page }) => {
       const searchInput = page.locator('#search-autocomplete-input');
       const query = 'Kitchen';
 
       await searchInput.fill(query);
       await searchInput.press('Enter');
-      
+
       // Проверяем, что в URL появился параметр search
       const params = new URL(page.url()).searchParams;
       expect(params.get('search')).toBe(query);
-      
+
       // Проверяем, что мы не на 404 странице и контент загрузился
       await expect(page.locator('body')).toBeVisible();
     });
@@ -256,7 +256,7 @@ test.describe('Home Page Tests @regression', () => {
       await page.goto('/');
       const searchInput = page.locator('#search-autocomplete-input');
       await searchInput.press('Enter');
-      
+
       const params = new URL(page.url()).searchParams;
       expect(params.get('search')).toBe('');
     });
@@ -276,7 +276,7 @@ test.describe('Home Page Tests @regression', () => {
       const searchInput = page.locator('#search-autocomplete-input');
       await searchInput.fill('!@#$%^&*'.repeat(20));
       await searchInput.press('Enter');
-      
+
       const params = new URL(page.url()).searchParams;
       expect(params.get('search')).toBe('!@#$%^&*'.repeat(20));
     });

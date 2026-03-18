@@ -1,55 +1,8 @@
-/**
- * LOGIN FORM SUITE — КОМПЛЕКСНЫЙ ТЕСТ ФОРМЫ АВТОРИЗАЦИИ
- * 
- * Данный набор тестов выполняет исчерпывающую проверку формы входа, включая визуальное соответствие,
- * функциональную валидацию, безопасность (XSS/SQLi) и удобство использования (UI/UX).
- * 
- * ЧЕК-ЛИСТ ПРОВЕРОК:
- * 
- * 1. АВТОРИЗАЦИЯ И ОСНОВНОЙ ФУНКЦИОНАЛ:
- *    - Успешный вход с валидными данными и проверка исчезновения формы.
- *    - Автоматическая обработка лимитов на попытки входа (Rate Limiting).
- *    - Проверка сохранения сессии и корректности типов полей (email/password).
- * 
- * 2. UI/UX И ВИЗУАЛЬНЫЙ АУДИТ:
- *    - Адаптивность: проверка корректного отображения на различных разрешениях.
- *    - Доступность (Accessibility): соответствие стандартам WCAG.
- *    - Стили: проверка CSS-параметров элементов формы.
- *    - Видимость: контроль присутствия всех ключевых полей и кнопок.
- * 
- * 3. ГЛУБОКАЯ ВАЛИДАЦИЯ EMAIL:
- *    - Обязательность: проверка поведения при пустом поле.
- *    - Формат (Data-Driven): тестирование различных невалидных паттернов (без @, без домена и т.д.).
- *    - Пробелы: проверка автоматической обрезки (trim) краевых пробелов и запрет пробелов внутри.
- *    - Регистр: подтверждение нечувствительности email к заглавным буквам.
- *    - Границы: проверка лимита длины согласно стандартам RFC (до 254 символов).
- *    - Спецсимволы: проверка разрешенных (._-+) и запрещенных символов.
- * 
- * 4. ГЛУБОКАЯ ВАЛИДАЦИЯ ПАРОЛЯ:
- *    - Обязательность: реакция системы на пустой пароль.
- *    - Длина: проверка минимальных (6-8) и максимальных (64-128) ограничений.
- *    - Сложность: тестирование устойчивости к паролям разного состава (регистр, цифры, символы).
- *    - Интерактивность: проверка функционала «Глазика» (переключение видимости пароля).
- *    - Ошибки: проверка корректности сообщений при неверном пароле (без раскрытия существования email).
- * 
- * 5. БЕЗОПАСНОСТЬ И ЗАЩИТА:
- *    - Защита от XSS: попытки внедрения <script> в поля ввода.
- *    - Защита от SQL-инъекций: тестирование классических паттернов (' OR 1=1 --).
- *    - Конфиденциальность: проверка отсутствия логирования пароля в открытом виде в HTML-коде.
- * 
- * 6. ДОПОЛНИТЕЛЬНЫЕ ЭЛЕМЕНТЫ:
- *    - Forgot Password: проверка наличия ссылки и корректности перехода на форму восстановления.
- *    - Remember Me: проверка наличия чекбокса, его состояний и влияния на форму.
- * 
- * ИТОГ: Тест гарантирует, что форма авторизации надежна, защищена от атак, 
- * удобна для пользователя и соответствует бизнес-требованиям.
- */
-
 import { test, expect } from '@playwright/test';
-import { checkResponsiveDesign, checkAccessibility, checkStyles } from './helpers/ui-ux-helpers';
-import { LoginPage } from './pages/login.page';
+import { checkResponsiveDesign, checkAccessibility, checkStyles } from 'utils/ui.ux.helper';
+import { LoginPage } from 'pages/login.page';
 
-test.describe.configure({ mode: 'serial' }); // Выполнять тесты по очереди
+test.describe.configure({ mode: 'serial' });
 
 test.describe('Login Form Suite @regression', () => {
   let loginPage: LoginPage;
@@ -61,11 +14,7 @@ test.describe('Login Form Suite @regression', () => {
     await loginPage.handleRateLimit();
   });
 
-  // ОБЯЗАТЕЛЬНО: Закрытие браузера после каждого теста
-  test.afterEach(async ({ page, context }) => {
-    await page.close();
-    await context.close();
-  });
+
 
   test('Успешная авторизация с валидными данными', async ({ page }) => {
     // ОБЯЗАТЕЛЬНАЯ проверка UI/UX и адаптивности формы логина (до заполнения)
@@ -76,8 +25,8 @@ test.describe('Login Form Suite @regression', () => {
     });
 
     await test.step('Заполнение формы валидными данными', async () => {
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
     });
 
     await test.step('Отправка формы и проверка успешного входа', async () => {
@@ -88,7 +37,7 @@ test.describe('Login Form Suite @regression', () => {
 
   test('Валидация обязательных полей', async () => {
     await test.step('Попытка входа с пустым email', async () => {
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
       await loginPage.loginButton.click();
 
       const isEmailInvalid = await loginPage.emailInput.evaluate((node: HTMLInputElement) => !node.checkValidity());
@@ -96,7 +45,7 @@ test.describe('Login Form Suite @regression', () => {
     });
 
     await test.step('Попытка входа с пустым паролем', async () => {
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill('');
       await loginPage.loginButton.click();
 
@@ -121,7 +70,7 @@ test.describe('Login Form Suite @regression', () => {
       await expect(loginPage.emailInput).toBeVisible();
       const validEmail = 'user@test.com';
       await loginPage.emailInput.fill(validEmail);
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
       const isValid = await loginPage.isEmailValid(validEmail);
       expect(isValid).toBe(true);
@@ -144,7 +93,7 @@ test.describe('Login Form Suite @regression', () => {
 
       const initialUrl = loginPage.page.url();
       await loginPage.emailInput.fill(email);
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
       await loginPage.loginButton.click();
 
       // Ждем либо валидации, либо изменения URL
@@ -184,7 +133,7 @@ test.describe('Login Form Suite @regression', () => {
   test('Email - проверка сообщения об ошибке для пустого поля', async () => {
     await test.step('Проверка отображения сообщения об ошибке для пустого email', async () => {
       await loginPage.emailInput.fill('');
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
       await loginPage.loginButton.click();
 
       const isInvalid = await loginPage.emailInput.evaluate((node: HTMLInputElement) => !node.checkValidity());
@@ -201,7 +150,7 @@ test.describe('Login Form Suite @regression', () => {
     await test.step('Пробелы в начале и в конце должны обрезаться', async () => {
       const emailWithSpaces = '  user@test.com  ';
       await loginPage.emailInput.fill(emailWithSpaces);
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
       const trimmedValue = await loginPage.emailInput.inputValue();
       expect(trimmedValue.trim()).toBe('user@test.com');
@@ -210,7 +159,7 @@ test.describe('Login Form Suite @regression', () => {
     await test.step('Пробелы внутри email должны вызывать ошибку', async () => {
       const emailWithSpacesInside = 'user @test.com';
       await loginPage.emailInput.fill(emailWithSpacesInside);
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
       const initialUrl = loginPage.page.url();
       await loginPage.loginButton.click();
@@ -249,7 +198,7 @@ test.describe('Login Form Suite @regression', () => {
 
       for (const email of emailsWithDifferentCase) {
         await loginPage.emailInput.fill(email);
-        await loginPage.passwordInput.fill('Qwerty123$');
+        await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
         const isValid = await loginPage.emailInput.evaluate((node: HTMLInputElement) => {
           return node.type === 'email' ? node.checkValidity() : true;
@@ -264,7 +213,7 @@ test.describe('Login Form Suite @regression', () => {
       // Валидный email длиной 254 символа
       const longValidEmail = 'a'.repeat(240) + '@test.com'; // 254 символа
       await loginPage.emailInput.fill(longValidEmail);
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
       const isValid = await loginPage.isEmailValid(longValidEmail);
       expect(isValid).toBe(true);
@@ -272,7 +221,7 @@ test.describe('Login Form Suite @regression', () => {
       // Email длиной более 254 символов
       const tooLongEmail = 'a'.repeat(250) + '@test.com'; // > 254 символов
       await loginPage.emailInput.fill(tooLongEmail);
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
       const initialUrl = loginPage.page.url();
       await loginPage.loginButton.click();
@@ -312,7 +261,7 @@ test.describe('Login Form Suite @regression', () => {
 
       for (const email of validEmailsWithSpecialChars) {
         await loginPage.emailInput.fill(email);
-        await loginPage.passwordInput.fill('Qwerty123$');
+        await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
         const isValid = await loginPage.isEmailValid(email);
         expect(isValid).toBe(true);
@@ -329,7 +278,7 @@ test.describe('Login Form Suite @regression', () => {
 
       for (const email of invalidEmailsWithForbiddenChars) {
         await loginPage.emailInput.fill(email);
-        await loginPage.passwordInput.fill('Qwerty123$');
+        await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
         const initialUrl = loginPage.page.url();
         await loginPage.loginButton.click();
@@ -361,7 +310,7 @@ test.describe('Login Form Suite @regression', () => {
     await test.step('Защита от XSS', async () => {
       const xssAttempt = '<script>alert("XSS")</script>@test.com';
       await loginPage.emailInput.fill(xssAttempt);
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
       const inputValueBeforeSubmit = await loginPage.emailInput.inputValue();
       expect(inputValueBeforeSubmit).toContain('<script>');
@@ -391,7 +340,7 @@ test.describe('Login Form Suite @regression', () => {
     await test.step('Защита от SQL-инъекций', async () => {
       const sqlInjectionAttempt = "' OR 1=1 --@test.com";
       await loginPage.emailInput.fill(sqlInjectionAttempt);
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
       const inputValueBeforeSubmit = await loginPage.emailInput.inputValue();
       expect(inputValueBeforeSubmit).toContain("' OR 1=1 --");
@@ -416,7 +365,7 @@ test.describe('Login Form Suite @regression', () => {
 
   test('Password - проверка сообщения об ошибке для пустого поля', async () => {
     await test.step('Проверка отображения сообщения об ошибке для пустого пароля', async () => {
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill('');
       await loginPage.loginButton.click();
 
@@ -435,7 +384,7 @@ test.describe('Login Form Suite @regression', () => {
       const shortPasswords = ['12345', '123456', '1234567']; // 5, 6, 7 символов
 
       for (const shortPassword of shortPasswords) {
-        await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+        await loginPage.emailInput.fill(process.env.USER_EMAIL!);
         await loginPage.passwordInput.fill(shortPassword);
 
         const initialUrl = loginPage.page.url();
@@ -474,7 +423,7 @@ test.describe('Login Form Suite @regression', () => {
     await test.step('Проверка ограничения максимальной длины пароля (обычно 64-128 символов)', async () => {
       // Валидный пароль максимальной длины (128 символов)
       const maxLengthPassword = 'A'.repeat(128);
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill(maxLengthPassword);
 
       const isValid = await loginPage.passwordInput.evaluate((node: HTMLInputElement) => node.checkValidity());
@@ -529,7 +478,7 @@ test.describe('Login Form Suite @regression', () => {
       ];
 
       for (const weakPassword of weakPasswords) {
-        await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+        await loginPage.emailInput.fill(process.env.USER_EMAIL!);
         await loginPage.passwordInput.fill(weakPassword);
 
         const initialUrl = loginPage.page.url();
@@ -551,7 +500,7 @@ test.describe('Login Form Suite @regression', () => {
 
       // Валидный пароль со всеми требованиями
       const strongPassword = 'StrongPass123!';
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill(strongPassword);
 
       const isValid = await loginPage.passwordInput.evaluate((node: HTMLInputElement) => node.checkValidity());
@@ -562,7 +511,7 @@ test.describe('Login Form Suite @regression', () => {
   test('Password - проверка пробелов', async () => {
     await test.step('Пробелы в начале и в конце должны обрабатываться корректно', async () => {
       const passwordWithSpaces = '  Qwerty123$  ';
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill(passwordWithSpaces);
 
       const inputValue = await loginPage.passwordInput.inputValue();
@@ -586,7 +535,7 @@ test.describe('Login Form Suite @regression', () => {
 
     await test.step('Пробел внутри пароля - проверка разрешения/запрета', async () => {
       const passwordWithSpaceInside = 'Qwerty 123$';
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill(passwordWithSpaceInside);
 
       const initialUrl = loginPage.page.url();
@@ -609,7 +558,7 @@ test.describe('Login Form Suite @regression', () => {
 
   test('Password - проверка отображения (скрыт/показать)', async () => {
     await test.step('Пароль должен быть скрыт по умолчанию', async () => {
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
       const inputType = await loginPage.getPasswordInputType();
       expect(inputType).toBe('password');
@@ -621,7 +570,7 @@ test.describe('Login Form Suite @regression', () => {
     });
 
     await test.step('Проверка наличия и функциональности иконки показа/скрытия пароля', async () => {
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
       // Проверяем наличие иконки toggle
       const toggleExists = await loginPage.passwordToggle.isVisible({ timeout: 2000 }).catch(() => false);
@@ -636,7 +585,7 @@ test.describe('Login Form Suite @regression', () => {
 
         // Проверяем, что пароль виден
         const visibleValue = await loginPage.passwordInput.inputValue();
-        expect(visibleValue).toBe('Qwerty123$');
+        expect(visibleValue).toBe(process.env.USER_PASSWORD!);
 
         // Кликаем обратно для скрытия пароля
         await loginPage.togglePasswordVisibility();
@@ -649,7 +598,7 @@ test.describe('Login Form Suite @regression', () => {
 
   test('Password - проверка сообщения об ошибке для неверного пароля', async () => {
     await test.step('Корректное сообщение об ошибке при неверном пароле', async () => {
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill('WrongPassword123$');
       await loginPage.loginButton.click();
 
@@ -686,7 +635,7 @@ test.describe('Login Form Suite @regression', () => {
   test('Password - проверка безопасности (XSS и SQL-инъекции)', async () => {
     await test.step('Защита от XSS в пароле', async () => {
       const xssAttempt = '<script>alert("XSS")</script>';
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill(xssAttempt);
 
       const inputValueBeforeSubmit = await loginPage.passwordInput.inputValue();
@@ -716,7 +665,7 @@ test.describe('Login Form Suite @regression', () => {
 
     await test.step('Защита от SQL-инъекций в пароле', async () => {
       const sqlInjectionAttempt = "' OR 1=1 --";
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill(sqlInjectionAttempt);
 
       const inputValueBeforeSubmit = await loginPage.passwordInput.inputValue();
@@ -741,7 +690,7 @@ test.describe('Login Form Suite @regression', () => {
 
     await test.step('Проверка отсутствия логирования пароля в открытом виде', async () => {
       const testPassword = 'TestPassword123$';
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill(testPassword);
 
       const pageContent = await loginPage.page.content();
@@ -759,7 +708,7 @@ test.describe('Login Form Suite @regression', () => {
   test('Неуспешная авторизация с неверными данными', async () => {
     await test.step('Попытка входа с неверным email', async () => {
       await loginPage.emailInput.fill('wrong@email.com');
-      await loginPage.passwordInput.fill('Qwerty123$');
+      await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
       await loginPage.loginButton.click();
 
       await expect(loginPage.loginButton).toBeVisible({ timeout: 5000 });
@@ -768,7 +717,7 @@ test.describe('Login Form Suite @regression', () => {
     });
 
     await test.step('Попытка входа с неверным паролем', async () => {
-      await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
+      await loginPage.emailInput.fill(process.env.USER_EMAIL!);
       await loginPage.passwordInput.fill('WrongPassword123$');
       await loginPage.loginButton.click();
 
@@ -844,8 +793,8 @@ test.describe('Login Form Suite @regression', () => {
         await expect(loginPage.rememberMeCheckbox).not.toBeChecked();
 
         await loginPage.rememberMeCheckbox.check();
-        await loginPage.emailInput.fill('ihor.mynaiev@greenice.net');
-        await loginPage.passwordInput.fill('Qwerty123$');
+        await loginPage.emailInput.fill(process.env.USER_EMAIL!);
+        await loginPage.passwordInput.fill(process.env.USER_PASSWORD!);
 
         const checkboxStateBeforeLogin = await loginPage.rememberMeCheckbox.isChecked();
         expect(checkboxStateBeforeLogin).toBe(true);

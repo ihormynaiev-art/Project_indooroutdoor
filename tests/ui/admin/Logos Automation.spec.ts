@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from './pages/login.page';
-import { LogosPage } from './pages/logos.page';
-import { LogoFormPage } from './pages/logo-form.page';
-import { LogoShowPage } from './pages/logo-show.page';
+import { LoginPage } from 'pages/login.page';
+import { LogosPage } from 'pages/logos.page';
+import { LogoFormPage } from 'pages/logo.form.page';
+import { LogoShowPage } from 'pages/logo.show.page';
 import * as path from 'path';
 
 // Helper to generate a random slug starting with "A"
@@ -21,8 +21,8 @@ test.describe('Admin Logos Page: Verification of UI, Sorting, and CRUD Lifecycle
   let formPage: LogoFormPage;
   let showPage: LogoShowPage;
 
-  const testImage1 = path.resolve(__dirname, '../logo.png');
-  const testImage2 = path.resolve(__dirname, '../500px-JPEG_example_down.jpg');
+  const testImage1 = path.resolve(__dirname, '../../../logo.png');
+  const testImage2 = path.resolve(__dirname, '../../../500px-JPEG_example_down.jpg');
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);

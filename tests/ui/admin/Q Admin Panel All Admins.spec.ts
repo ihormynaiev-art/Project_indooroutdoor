@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from './pages/login.page';
-import { AdminsPage, AdminDetailsPage } from './pages/admins.page';
-import { checkUIUX, checkStyles } from './helpers/ui-ux-helpers';
+import { LoginPage } from 'pages/login.page';
+import { AdminsPage } from 'pages/admins.page';
+import { AdminDetailsPage } from 'pages/admin.details.page';
+import { checkUIUX, checkStyles } from 'utils/ui.ux.helper';
 
 test.describe('Admin Panel / All Admins Management @regression', () => {
   let loginPage: LoginPage;

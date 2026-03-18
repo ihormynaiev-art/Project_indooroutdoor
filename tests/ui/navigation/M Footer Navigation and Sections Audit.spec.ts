@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { checkStyles, checkUIUX } from './helpers/ui-ux-helpers';
+import { checkStyles, checkUIUX } from 'utils/ui.ux.helper';
 
 test.describe('Footer and Links Validation @regression', () => {
   test.beforeEach(async ({ page }) => {

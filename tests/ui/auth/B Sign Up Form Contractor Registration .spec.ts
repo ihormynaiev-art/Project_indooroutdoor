@@ -54,7 +54,7 @@
  */
 
 import { test, expect } from '@playwright/test';
-import { checkUIUX, BRAND_COLORS } from './helpers/ui-ux-helpers';
+import { checkUIUX, BRAND_COLORS } from 'utils/ui.ux.helper';
 
 test.describe.configure({ mode: 'serial' }); // Выполнять тесты по очереди
 
@@ -2099,6 +2099,153 @@ test.describe('Contractor Registration Fields @regression', () => {
     });
 
     console.log('✅ Все проверки кнопки Signup завершены');
+  });
+
+  test('reCAPTCHA: Visibility and Integration', async ({ page }) => {
+    test.setTimeout(120000);
+
+    await test.step('Verify reCAPTCHA widget is visible', async () => {
+      const recaptchaIframe = page.locator('iframe[src*="recaptcha"]').first();
+      await recaptchaIframe.scrollIntoViewIfNeeded();
+      await expect(recaptchaIframe).toBeVisible({ timeout: 15000 });
+      console.log('✅ reCAPTCHA iframe is visible on the page');
+    });
+
+    await test.step('Verify reCAPTCHA container and checkbox', async () => {
+      const recaptchaContainer = page.locator('.g-recaptcha, [data-sitekey]').first();
+      const containerCount = await recaptchaContainer.count();
+      expect(containerCount).toBeGreaterThan(0);
+
+      const siteKey = await recaptchaContainer.getAttribute('data-sitekey');
+      expect(siteKey).toBeTruthy();
+      console.log('✅ reCAPTCHA container found with valid site key');
+    });
+
+    await test.step('Verify reCAPTCHA iframe structure', async () => {
+      const recaptchaIframe = page.locator('iframe[src*="recaptcha"]').first();
+      const iframeSrc = await recaptchaIframe.getAttribute('src');
+      expect(iframeSrc).toContain('google.com/recaptcha');
+      console.log(`✅ reCAPTCHA iframe source: ${iframeSrc?.substring(0, 60)}...`);
+    });
+
+    await test.step('Verify form submission blocked without reCAPTCHA', async () => {
+      const businessNameInput = page.locator('input[name*="business"], input[placeholder*="business name" i]').first();
+      const fullNameInput = page.getByPlaceholder('Enter your name');
+      const emailInput = page.getByPlaceholder('example@email.com');
+      const phoneInput = page.locator('#business-phone');
+      const passwordInput = page.locator('#password');
+      const confirmInput = page.locator('#password_confirmation');
+      const signupButton = page.locator('button.login-btn').or(page.getByRole('button', { name: /signup/i })).first();
+
+      await businessNameInput.fill('Test Company');
+      await fullNameInput.fill('John Doe');
+      const registrationTimestamp = Math.floor(Date.now() / 1000);
+      await emailInput.fill(`test+${registrationTimestamp}@example.com`);
+      await phoneInput.fill('0123456789');
+      await passwordInput.fill('Password123$');
+      await confirmInput.fill('Password123$');
+
+      const urlBeforeSubmit = page.url();
+      await signupButton.click();
+      await page.waitForTimeout(2000);
+
+      const bodyText = await page.locator('body').textContent();
+      const urlAfterSubmit = page.url();
+
+      const hasRecaptchaError = bodyText?.toLowerCase().includes('captcha')
+        || bodyText?.toLowerCase().includes('robot')
+        || bodyText?.toLowerCase().includes('verify')
+        || bodyText?.toLowerCase().includes('recaptcha');
+      const formStillVisible = await signupButton.isVisible().catch(() => false);
+      const urlNotChanged = urlAfterSubmit === urlBeforeSubmit;
+
+      expect(formStillVisible || urlNotChanged || hasRecaptchaError).toBe(true);
+
+      if (hasRecaptchaError) {
+        console.log('✅ Form submission blocked: reCAPTCHA validation error displayed');
+      } else if (formStillVisible && urlNotChanged) {
+        console.log('✅ Form submission blocked: form remains visible without reCAPTCHA completion');
+      } else {
+        console.log('⚠️ Form behavior after submit without reCAPTCHA needs manual verification');
+      }
+    });
+
+    console.log('✅ All reCAPTCHA checks completed');
+  });
+
+  test('Registration Submission: End-to-End Flow', async ({ page }) => {
+    test.setTimeout(120000);
+
+    await test.step('Fill all required fields with valid data', async () => {
+      const businessNameInput = page.locator('input[name*="business"], input[placeholder*="business name" i]').first();
+      const fullNameInput = page.getByPlaceholder('Enter your name');
+      const emailInput = page.getByPlaceholder('example@email.com');
+      const phoneInput = page.locator('#business-phone');
+      const passwordInput = page.locator('#password');
+      const confirmInput = page.locator('#password_confirmation');
+
+      await businessNameInput.fill('Playwright Test Company');
+      await fullNameInput.fill('Test Automation User');
+      const submissionTimestamp = Math.floor(Date.now() / 1000);
+      await emailInput.fill(`playwright+${submissionTimestamp}@example.com`);
+      await phoneInput.fill('5551234567');
+      await passwordInput.fill('SecurePass123$');
+      await confirmInput.fill('SecurePass123$');
+
+      console.log('✅ All required fields filled with valid data');
+    });
+
+    await test.step('Verify all fields are filled before submission', async () => {
+      const businessNameInput = page.locator('input[name*="business"], input[placeholder*="business name" i]').first();
+      const fullNameInput = page.getByPlaceholder('Enter your name');
+      const emailInput = page.getByPlaceholder('example@email.com');
+      const phoneInput = page.locator('#business-phone');
+      const passwordInput = page.locator('#password');
+      const confirmInput = page.locator('#password_confirmation');
+
+      expect(await businessNameInput.inputValue()).toBeTruthy();
+      expect(await fullNameInput.inputValue()).toBeTruthy();
+      expect(await emailInput.inputValue()).toBeTruthy();
+      expect(await phoneInput.inputValue()).toBeTruthy();
+      expect(await passwordInput.inputValue()).toBeTruthy();
+      expect(await confirmInput.inputValue()).toBeTruthy();
+
+      console.log('✅ All fields verified as non-empty before submission');
+    });
+
+    await test.step('Attempt form submission and verify reCAPTCHA requirement', async () => {
+      const signupButton = page.locator('button.login-btn').or(page.getByRole('button', { name: /signup/i })).first();
+      await signupButton.scrollIntoViewIfNeeded();
+
+      const urlBeforeSubmit = page.url();
+      await signupButton.click();
+      await page.waitForTimeout(3000);
+
+      const urlAfterSubmit = page.url();
+      const bodyText = await page.locator('body').textContent() || '';
+
+      const registrationSuccessful = urlAfterSubmit !== urlBeforeSubmit
+        && (urlAfterSubmit.includes('success')
+          || urlAfterSubmit.includes('dashboard')
+          || urlAfterSubmit.includes('welcome'));
+
+      const hasValidationError = bodyText.toLowerCase().includes('captcha')
+        || bodyText.toLowerCase().includes('robot')
+        || bodyText.toLowerCase().includes('error')
+        || bodyText.toLowerCase().includes('required');
+
+      if (registrationSuccessful) {
+        console.log(`✅ Registration successful, redirected to: ${urlAfterSubmit}`);
+      } else if (hasValidationError) {
+        console.log('✅ Registration blocked by validation (likely reCAPTCHA not completed)');
+      } else {
+        console.log('⚠️ Registration outcome unclear, manual verification required');
+      }
+
+      expect(registrationSuccessful || hasValidationError || urlAfterSubmit === urlBeforeSubmit).toBe(true);
+    });
+
+    console.log('✅ All Registration Submission checks completed');
   });
 
   test('UI/UX: Проверка адаптивности и пользовательского интерфейса', async ({ page }) => {

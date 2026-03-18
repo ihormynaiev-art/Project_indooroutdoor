@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { checkUIUX, checkStyles } from './helpers/ui-ux-helpers';
+import { checkUIUX, checkStyles } from 'utils/ui.ux.helper';
 
 test.describe('Header Navigation Audit @regression', () => {
   test.beforeEach(async ({ page }) => {
