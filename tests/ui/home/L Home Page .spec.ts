@@ -3,7 +3,7 @@ import { checkStyles, checkAccessibility, checkResponsiveDesign, checkPerformanc
 
 test.describe.configure({ mode: 'serial' }); // Выполнять тесты по очереди
 
-test.describe('Home Page Tests @regression', () => {
+test.describe('Home Page Tests @regression @smoke', () => {
   test.beforeEach(async ({ page }) => {
     await page.setViewportSize({ width: 1920, height: 1080 });
     await page.goto('https://dev.indooroutdoor.com/');

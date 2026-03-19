@@ -74,7 +74,7 @@ async function waitForLoginLimitReset(page: any, waitSeconds: number) {
   await page.waitForTimeout(1000);
 }
 
-test.describe('Login and Navigation Suite @regression', () => {
+test.describe('Login and Navigation Suite @regression @smoke', () => {
   
   test.beforeEach(async ({ page }) => {
     await page.setViewportSize({ width: 1920, height: 1080 });

@@ -4,7 +4,7 @@ import { LoginPage } from 'pages/login.page';
 
 test.describe.configure({ mode: 'serial' });
 
-test.describe('Login Form Suite @regression', () => {
+test.describe('Login Form Suite @regression @smoke', () => {
   let loginPage: LoginPage;
 
   test.beforeEach(async ({ page }) => {
