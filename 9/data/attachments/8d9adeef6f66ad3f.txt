@@ -1,0 +1,12 @@
+✅ Ссылка Sign Up найдена на главной странице
+✅ Переход на страницу регистрации выполнен
+✅ Опция Homeowner Sign Up отображается
+✅ Переход к форме Homeowner Signup выполнен
+✅ Заголовок формы найден: "Homeowner Signup"
+Responsive check passed for desktop (1920x1080)
+Responsive check passed for tablet (768x1024)
+Responsive check passed for mobile (375x667)
+Warning: H1 not found, but other headings exist
+Accessibility check passed
+Styles check passed
+Performance: Load Time=479ms, TTFB=42ms
