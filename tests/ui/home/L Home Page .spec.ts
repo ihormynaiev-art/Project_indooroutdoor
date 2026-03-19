@@ -49,8 +49,8 @@ test.describe('Home Page Tests @regression', () => {
 
     // Проверка секции "FROM TO-DO TO DONE"
     await test.step('Проверка секции "FROM TO-DO TO DONE"', async () => {
-      await expect(page.locator('h3')).toContainText('FROM TO-DO TO DONE ®');
-      await expect(page.getByRole('heading', { name: 'FROM TO-DO TO DONE ®' })).toBeVisible();
+      await expect(page.locator('h3').filter({ hasText: 'FROM TO-DO TO DONE ®' }).first()).toContainText('FROM TO-DO TO DONE ®');
+      await expect(page.getByRole('heading', { name: 'FROM TO-DO TO DONE ®' }).first()).toBeVisible();
       await expect(page.locator('body')).toContainText(/Whether it.s routine maintenance/);
       await expect(page.getByText(/Whether it.s routine/)).toBeVisible();
     });

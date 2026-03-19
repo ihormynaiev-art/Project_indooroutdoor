@@ -105,10 +105,10 @@ test.describe('Homeowner Signup Navigation @regression', () => {
     });
 
     await test.step('Проверка заголовка формы Homeowner Signup', async () => {
-      await expect(page.locator('h3')).toContainText('Homeowner Signup', { timeout: 10000 });
-      await expect(page.getByRole('heading', { name: 'Homeowner Signup' })).toBeVisible({ timeout: 10000 });
+      await expect(page.getByRole('heading', { level: 3, name: 'Homeowner Signup' }).first()).toContainText('Homeowner Signup', { timeout: 10000 });
+      await expect(page.getByRole('heading', { name: 'Homeowner Signup' }).first()).toBeVisible({ timeout: 10000 });
       
-      const heading = page.getByRole('heading', { name: 'Homeowner Signup' });
+      const heading = page.getByRole('heading', { name: 'Homeowner Signup' }).first();
       const headingText = await heading.textContent();
       expect(headingText).toContain('Homeowner Signup');
       console.log(`✅ Заголовок формы найден: "${headingText?.trim()}"`);

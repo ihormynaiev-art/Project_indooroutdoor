@@ -21,8 +21,8 @@ test.describe('Admin Logos Page: Verification of UI, Sorting, and CRUD Lifecycle
   let formPage: LogoFormPage;
   let showPage: LogoShowPage;
 
-  const testImage1 = path.resolve(__dirname, '../../../test-data/files/logo.png');
-  const testImage2 = path.resolve(__dirname, '../../../test-data/files/500px-JPEG_example_down.jpg');
+  const testImage1 = path.join(process.cwd(), 'test-data/files/logo.png');
+  const testImage2 = path.join(process.cwd(), 'test-data/files/500px-JPEG_example_down.jpg');
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);

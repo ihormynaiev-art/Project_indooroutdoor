@@ -349,7 +349,7 @@ test.describe('Business Logo Management Suite @regression', () => {
 
     // Загрузка логотипа
     await test.step('Загрузка логотипа', async () => {
-      const logoPath = path.resolve('logo.png');
+      const logoPath = path.join(process.cwd(), 'test-data/files/logo.png');
       await page.locator('#logo').setInputFiles(logoPath);
     });
 
@@ -1503,7 +1503,7 @@ test.describe('Business Logo Management Suite @regression', () => {
         // 3. Проверка загрузки изображений
         
         // 3.1. Проверка загрузки одного изображения (JPEG)
-        const jpegPath = path.resolve('500px-JPEG_example_down.jpg');
+        const jpegPath = path.join(process.cwd(), 'test-data/files/500px-JPEG_example_down.jpg');
         await fileInput.setInputFiles(jpegPath);
         await page.waitForTimeout(1000);
         
@@ -1514,7 +1514,7 @@ test.describe('Business Logo Management Suite @regression', () => {
         console.log(`✅ Изображение JPEG загружено (найдено элементов в галерее: ${itemsCount})`);
 
         // 3.2. Проверка загрузки второго изображения (PNG)
-        const pngPath = path.resolve('PNG_transparency_demonstration_1.png');
+        const pngPath = path.join(process.cwd(), 'test-data/files/PNG_transparency_demonstration_1.png');
         await fileInput.setInputFiles(pngPath);
         await page.waitForTimeout(1000);
         
@@ -1523,7 +1523,7 @@ test.describe('Business Logo Management Suite @regression', () => {
         console.log(`✅ Изображение PNG загружено (найдено элементов в галерее: ${itemsCount2})`);
 
         // 3.3. Проверка загрузки третьего изображения (JPG)
-        const jpgPath = path.resolve('what-is-jpeg_cat.jpg');
+        const jpgPath = path.join(process.cwd(), 'test-data/files/what-is-jpeg_cat.jpg');
         await fileInput.setInputFiles(jpgPath);
         await page.waitForTimeout(1000);
         
@@ -1534,7 +1534,7 @@ test.describe('Business Logo Management Suite @regression', () => {
         // 3.4. Проверка лимита загрузки (для Lite плана - максимум 3 фото)
         // Пытаемся загрузить четвертое изображение
         if (itemsCount3 < 3) {
-          const testImagePath = path.resolve('logo.png'); // Используем существующее изображение
+          const testImagePath = path.join(process.cwd(), 'test-data/files/logo.png'); // Используем существующее изображение
           if (await fileInput.isVisible()) {
             await fileInput.setInputFiles(testImagePath);
             await page.waitForTimeout(1000);
