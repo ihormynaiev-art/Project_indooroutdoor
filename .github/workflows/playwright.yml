@@ -8,6 +8,28 @@ on:
   schedule:
     - cron: '0 7 * * *'  # Runs at 07:00 UTC (09:00 locally) every day
   workflow_dispatch:
+    inputs:
+      test_suite:
+        description: 'Choose test suite to run'
+        required: true
+        default: '@regression'
+        type: choice
+        options:
+          - '@regression'
+          - '@smoke'
+          - 'all'
+      browser:
+        description: 'Choose browser'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - 'all'
+          - 'chromium'
+          - 'firefox'
+          - 'webkit'
+          - 'msedge'
+          - 'chrome'
 
 jobs:
   test:
@@ -34,7 +56,20 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
-      run: npx playwright test
+      run: |
+        # Определяем параметры запуска (ручные или автоматические)
+        TAG=${{ github.event.inputs.test_suite || '@regression' }}
+        BROWSER=${{ github.event.inputs.browser || 'all' }}
+        
+        # Собираем флаги
+        PROJECT_FLAG=""
+        if [ "$BROWSER" != "all" ]; then PROJECT_FLAG="--project=$BROWSER"; fi
+        
+        GREP_FLAG=""
+        if [ "$TAG" != "all" ]; then GREP_FLAG="--grep=$TAG"; fi
+        
+        echo "Running tests with: $PROJECT_FLAG $GREP_FLAG"
+        npx playwright test $PROJECT_FLAG $GREP_FLAG
       continue-on-error: true
 
     - name: Load Allure History
