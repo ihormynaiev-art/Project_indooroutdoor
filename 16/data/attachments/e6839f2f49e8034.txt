@@ -1,0 +1,32 @@
+✅ Навигация к форме Homeowner Signup выполнена
+✅ Поле Full Name найдено
+✅ Placeholder найден: "Enter your name"
+✅ Поле помечено как обязательное (required)
+✅ Autocomplete установлен: "name"
+✅ Тип поля: "text"
+✅ CSS классы применены: "border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm form-control"
+✅ Focus State: border-color=rgb(194, 201, 209), outline=rgb(33, 37, 41) none 0px
+✅ Стили поля: font-size=15px, padding=6px 15px, border-radius=5px
+✅ Класс shadow-sm применен
+✅ Поле доступно для редактирования (не read-only и не disabled)
+✅ Tab работает (активный элемент: INPUT)
+✅ Очистка через Ctrl+A + Backspace работает
+✅ Латиница принята: "John Doe"
+✅ Кириллица принята: "Иван Иванов"
+✅ Дефис принят: "Mary-Jane Watson"
+✅ Апостроф принят: "O'Brien"
+✅ Пробелы приняты: "John Michael Smith"
+✅ Минимальная длина (1 символ): "A" (длина: 1)
+✅ Минимальная длина (2 символа): "AB" (длина: 2)
+✅ Максимальная длина (255 символов): длина=200
+✅ Превышение лимита обработано: длина=200
+✅ Валидация пустого поля: HTML5 валидация работает (valueMissing)
+✅ Только пробелы обработаны: поле обрезает пробелы (trim работает)
+⚠️ Лишние пробелы: "  John Doe  "
+Responsive check passed for desktop (1920x1080)
+Responsive check passed for tablet (768x1024)
+Responsive check passed for mobile (375x667)
+Warning: H1 not found, but other headings exist
+Accessibility check passed
+Styles check passed
+Performance: Load Time=500ms, TTFB=49ms
