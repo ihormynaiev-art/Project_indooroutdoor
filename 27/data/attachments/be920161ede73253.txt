@@ -1,0 +1,29 @@
+✅ Навигация к форме Homeowner Signup выполнена
+✅ Кнопка Signup найдена и видима
+✅ Текст кнопки: "Signup"
+✅ Тип кнопки: "submit"
+✅ CSS классы применены: "site-button site-button-primary w-100 login-btn"
+✅ Стили кнопки: background-color=rgb(11, 28, 84), width=420px, cursor=pointer
+✅ Кнопка занимает 100% ширины (w-100)
+✅ Cursor установлен: pointer
+✅ Кнопка активна (не disabled)
+✅ Кнопка видима
+✅ Кнопка доступна для взаимодействия
+✅ Кнопка кликабельна
+✅ Hover состояние: background-color=rgb(22, 44, 126), opacity=1
+✅ Кнопка получает фокус через Tab
+✅ Клик по кнопке выполнен
+⚠️ Валидация формы: сообщения об ошибках не найдены (возможно, валидация на сервере)
+✅ Форма не отправилась с пустыми полями (валидация сработала)
+✅ Поле Name заполнено
+✅ Поле Email заполнено
+✅ Поле Password заполнено
+✅ Поле Password Confirmation заполнено
+ℹ️ Форма отправлена: проверка результата требует дополнительной настройки
+Responsive check passed for desktop (1920x1080)
+Responsive check passed for tablet (768x1024)
+Responsive check passed for mobile (375x667)
+Warning: H1 not found, but other headings exist
+Accessibility check passed
+Styles check passed
+Performance: Load Time=554ms, TTFB=58ms
