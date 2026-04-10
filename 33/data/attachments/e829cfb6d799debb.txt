@@ -1,8 +1,0 @@
-Styles check passed
-Responsive check passed for desktop (1920x1080)
-Responsive check passed for tablet (768x1024)
-Responsive check passed for mobile (375x667)
-Warning: H1 not found, but other headings exist
-Accessibility check passed
-Styles check passed
-Performance: Load Time=789ms, TTFB=555ms
