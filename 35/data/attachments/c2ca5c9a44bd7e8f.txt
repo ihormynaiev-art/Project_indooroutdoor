@@ -1,0 +1,27 @@
+✅ Текст заголовка найден: "Contractor Profile Setup"
+✅ Регистр букв корректный
+✅ Font-weight заголовка: 500 (medium)
+✅ Font-size заголовка: 24px
+✅ Font-family заголовка: Poppins, sans-serif
+✅ Заголовок видим и не скрыт через CSS
+✅ Цвет заголовка темный: rgb(51, 51, 51)
+✅ Заголовок находится вверху страницы (y=100px)
+✅ Размеры заголовка: width=1602px, height=28.796875px
+✅ Заголовок находится в основном контенте (не в header/nav)
+✅ Заголовок находится в правильном теге: <h4>
+✅ Все ключевые слова найдены в блоке
+✅ Email ссылка найдена: mailto:info@indooroutdoor.com
+✅ Font-weight заголовка "Background Image": 600
+✅ Font-size заголовка "Background Image": 16px
+✅ Font-weight слова "Premium": 600 (жирный)
+✅ Размеры блока: width=1920px, height=5493.296875px
+✅ Блок расположен на странице (y=0px)
+✅ Блок находится в основном контенте (не в header/nav)
+✅ Отступы блока: padding=0px, margin=0px
+Responsive check passed for desktop (1920x1080)
+Responsive check passed for tablet (768x1024)
+Responsive check passed for mobile (375x667)
+Warning: H1 not found, but other headings exist
+Accessibility check passed
+Styles check passed
+Performance: Load Time=594ms, TTFB=152ms
